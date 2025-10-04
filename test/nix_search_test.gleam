@@ -1,14 +1,14 @@
+import api/search
 import gleam/list
 import gleeunit
 import gleeunit/should
-import nix_search
 
 pub fn main() -> Nil {
   gleeunit.main()
 }
 
 pub fn search_and_parse_packages_test() {
-  let search_result = nix_search.search("ripgrep")
+  let search_result = search.search("ripgrep")
   search_result
   |> should.be_ok
 
