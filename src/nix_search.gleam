@@ -20,12 +20,9 @@ pub type CommandError {
   ExecuteError(execute.ExecuteError)
 }
 
-pub fn main() {
-  let assert [package_name] = argv.load().arguments
-  // handle input error with message instead
-
+pub fn search(query) {
   execute.execute(
-    "nix search nixpkgs " <> package_name <> " --json",
+    "nix search nixpkgs " <> query <> " --json",
     1024 * 1024 * 100,
   )
   |> result.map_error(ExecuteError)
@@ -34,12 +31,21 @@ pub fn main() {
     |> result.map_error(DecodeError)
   })
   |> result.try(turn_package_dict_to_list)
-  |> result.map(fn(package_list) {
-    list.each(package_list, fn(item) {
-      print_newline()
-      print_package(item)
-    })
+}
+
+fn print_package_list(list) {
+  list.each(list, fn(item) {
+    print_newline()
+    print_package(item)
   })
+}
+
+pub fn main() {
+  // todo: handle input error with message instead
+  let assert [package_name] = argv.load().arguments
+
+  search(package_name)
+  |> result.map(print_package_list)
 }
 
 fn print_newline() {
