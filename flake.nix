@@ -14,7 +14,6 @@
         devShell = with pkgs; pkgs.mkShell {
           buildInputs = [
             gleam
-            nodejs_20
             bun
           ];
         };

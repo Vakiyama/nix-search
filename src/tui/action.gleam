@@ -1,6 +1,8 @@
 import ffi/input
+import gleam/int
 import gleam/io
 import gleam/result
+import gleam/string
 import tui/tui
 
 pub fn run_action(state: tui.State) {
@@ -13,9 +15,9 @@ pub fn run_action(state: tui.State) {
 fn run_search_action(payload: tui.SearchState) {
   use input <- result.map(input.input(payload.query))
 
-  io.println(input)
+  io.println(input |> input.key_to_string)
 
-  tui.SearchState(query: payload.query <> input)
+  tui.SearchState(query: payload.query <> input |> input.key_to_string)
   |> tui.Search
 }
 
