@@ -1,25 +1,23 @@
 import api/search
 import gleam/io
-import gleam/io
 import gleam/list
-import tui/print
-import tui/tui
+import tui/model/model
 
-pub fn render(state: tui.State) {
-  times(80, print.newline)
+pub fn render(state: model.Model) {
+  times(80, newline)
   case state {
-    tui.Search(search_params) -> render_search(search_params)
-    tui.Results(results_params) -> render_results(results_params)
+    model.Search(search_params) -> render_search(search_params)
+    model.Results(results_params) -> render_results(results_params)
   }
 
   state
 }
 
-fn render_search(payload: tui.SearchState) {
+fn render_search(payload: model.SearchState) {
   io.println("Enter a package name:")
 }
 
-fn render_results(payload: tui.ResultsState) {
+fn render_results(payload: model.ResultsState) {
   todo
   // print.print_package_list(payload.results)
 }
