@@ -1,14 +1,14 @@
+import app/message
 import gleam/javascript/promise
-import tui/message
 
 pub type Task(a) {
-  None
-  Effect(
+  Run(
     effect: Effect(a),
-    ok_tag: fn(a) -> message.Message,
-    err_tag: fn(String) -> message.Message,
-    id: String,
+    on_ok: fn(a) -> message.Message,
+    on_error: fn(String) -> message.Message,
   )
+  Message(message.Message)
+  Exit
 }
 
 pub type Effect(a) =
@@ -20,4 +20,8 @@ pub fn map(over eff: Effect(a), with mapper) -> Effect(b) {
 
 pub fn try(over eff: Effect(a), with mapper: fn(a) -> Effect(b)) -> Effect(b) {
   fn() { promise.await(eff(), fn(result) { mapper(result)() }) }
+}
+
+pub fn none() {
+  Message(message.None)
 }

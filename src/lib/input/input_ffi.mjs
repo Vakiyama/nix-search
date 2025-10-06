@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { execSync } from "node:child_process";
 import { Buffer } from "node:buffer";
 import { EventEmitter } from "node:events";
-import { Ok, Error as GError } from "../../gleam_stdlib/gleam.mjs";
+import { Ok, Error as GError } from "../../../gleam_stdlib/gleam.mjs";
 
 import { keypress } from "./keypress.mjs"
 
@@ -117,7 +117,6 @@ export function input(prompt) {
 
     let name = null;
     stream.on("keypress", (ch, key) => {
-      console.log({ ch, key })
       if (name !== null) return; // first event only
       name = stringifyKey(ch, key);
     });

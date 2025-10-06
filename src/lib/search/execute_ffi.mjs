@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { Ok, Error } from '../../gleam_stdlib/gleam.mjs'
+import { Ok, Error } from '../../../gleam_stdlib/gleam.mjs'
 
 export function execute(command, maxBufferBytes, done) {
   try  {

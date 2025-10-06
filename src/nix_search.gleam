@@ -1,5 +1,5 @@
-import tui/runtime/start
+import app/app
 
 pub fn main() {
-  start()
+  app.start()
 }

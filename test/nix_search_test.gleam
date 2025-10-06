@@ -1,7 +1,7 @@
-import api/search
 import gleam/list
 import gleeunit
 import gleeunit/should
+import lib/search/search
 
 pub fn main() -> Nil {
   gleeunit.main()

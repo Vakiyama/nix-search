@@ -1,7 +1,7 @@
-import ffi/execute
 import gleam/dict
 import gleam/dynamic/decode
 import gleam/result
+import lib/search/execute
 
 pub type Package {
   Package(
