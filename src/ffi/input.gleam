@@ -34,7 +34,7 @@ pub type Key {
   Unknown
 }
 
-pub fn input(prompt: String) -> Result(Key, InputError) {
+pub fn get_user_input_key(prompt: String) -> Result(Key, InputError) {
   result.map(input_ffi(prompt), decode_key)
 }
 

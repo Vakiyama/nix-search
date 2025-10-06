@@ -8,16 +8,17 @@ pub fn render(state: model.Model) {
   case state {
     model.Search(search_params) -> render_search(search_params)
     model.Results(results_params) -> render_results(results_params)
+    model.Error(message) -> io.println(message)
   }
 
   state
 }
 
-fn render_search(payload: model.SearchState) {
+fn render_search(payload: model.SearchModel) {
   io.println("Enter a package name:")
 }
 
-fn render_results(payload: model.ResultsState) {
+fn render_results(payload: model.ResultsModel) {
   todo
   // print.print_package_list(payload.results)
 }

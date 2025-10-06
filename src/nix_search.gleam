@@ -1,12 +1,5 @@
-import tui/model/model
-import tui/update/update
+import tui/runtime/start
 
 pub fn main() {
-  model.init()
-  |> loop
-}
-
-fn loop(state: model.Model) {
-  state
-  todo
+  start()
 }
